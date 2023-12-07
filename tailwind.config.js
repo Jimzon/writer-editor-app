@@ -3,10 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{vue,js}"],
 
   theme: {
-    colors: {
-      media_primary: "#00547C",
-      main_white: "#fff",
-    },
+    // colors: {
+    //   media_primary: "#00547C",
+    //   main_white: "#fff",
+    // },
     extend: {},
   },
 
