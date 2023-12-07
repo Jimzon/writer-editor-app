@@ -5,7 +5,7 @@
     <div class="flex justify-between items-center py-6">
       <h2 class="font-semibold text-xl">CompanyList</h2>
       <a
-        href="#/user-form"
+        href="#/company-form"
         class="bg-sky-800 flex text-white font-normal py-1.5 px-3.5 items-center text-md rounded-full"
       >
         <span class="text-md pr-2">+</span>Add Company
@@ -20,7 +20,6 @@
         </tr>
       </thead>
       <tbody class="mx-auto text-center">
-        <!-- Sample Row 1 -->
         <tr>
           <td class="py-2 px-4 border-b logo-cell">
             <input

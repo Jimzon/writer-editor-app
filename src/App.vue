@@ -11,6 +11,7 @@ import UsersList from "./pages/dashboard/UsersList.vue";
 import ArticlesTable from "./pages/dashboard/ArticlesTable.vue";
 import UserForm from "./pages/dashboard/UserForm.vue";
 import CompanyList from "./pages/dashboard/CompanyList.vue";
+import CompanyForm from "./pages/dashboard/CompanyForm.vue";
 
 const routes = {
   "/": Home,
@@ -22,6 +23,7 @@ const routes = {
   "/users-list": UsersList,
   "/user-form": UserForm,
   "/company-list": CompanyList,
+  "/company-form": CompanyForm,
 };
 
 const currentPath = ref(window.location.hash);
