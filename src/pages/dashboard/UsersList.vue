@@ -5,7 +5,7 @@
     <div class="flex justify-between items-center py-6">
       <h2 class="font-semibold text-xl">Users List</h2>
       <a
-        href=""
+        href="#/user-form"
         class="bg-sky-800 flex text-white font-normal py-1.5 px-3.5 items-center text-md rounded-full"
       >
         <span class="text-md pr-2">+</span>Create User

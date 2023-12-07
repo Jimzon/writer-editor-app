@@ -33,7 +33,7 @@
         </div>
         <a href="#/login" class="rounded-full h-12 w-12">
           <img
-            class="w-16 h-12 rounded-full mx-auto"
+            class="w-12 h-12 rounded-full mx-auto object-cover"
             src="/src/assets/sample-img.jpg"
             alt="profile-image"
             srcset=""
