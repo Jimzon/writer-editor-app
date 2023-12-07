@@ -23,6 +23,16 @@
             class="hover:underline duration-500 transition-all"
             >All Media</a
           >
+          <a
+            href="#/users-list"
+            class="hover:underline duration-500 transition-all"
+            >Users</a
+          >
+          <a
+            href="#/company-list"
+            class="hover:underline duration-500 transition-all"
+            >Companies</a
+          >
         </ul>
       </div>
 
