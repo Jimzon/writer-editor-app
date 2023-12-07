@@ -3,9 +3,7 @@
 <template>
   <div class="py-24 justify-center mx-auto items-center max-w-4xl p-3">
     <form @submit.prevent="submitForm" class="grid grid-cols-2 gap-4">
-      <!-- Column 1 -->
       <div>
-        <!-- Company Name Input -->
         <div class="mb-4">
           <label
             for="companyName"
@@ -21,10 +19,7 @@
           />
         </div>
       </div>
-
-      <!-- Column 2 -->
       <div>
-        <!-- Status Dropdown -->
         <div class="mb-4">
           <label for="status" class="block text-sm font-medium text-gray-600"
             >Status</label
@@ -40,8 +35,6 @@
           </select>
         </div>
       </div>
-
-      <!-- Image Upload -->
       <div class="col-span-2">
         <label
           for="companyImage"
@@ -56,8 +49,6 @@
           @change="handleImageUpload"
         />
       </div>
-
-      <!-- Display Uploaded Image -->
       <div class="col-span-2 mb-4">
         <label class="block text-sm font-medium text-gray-600"
           >Uploaded Image</label
@@ -73,7 +64,6 @@
         </div>
       </div>
 
-      <!-- Save Button -->
       <div class="col-span-2 flex justify-end">
         <button
           type="submit"
@@ -107,7 +97,6 @@ export default {
       }
     },
     submitForm() {
-      // Handle form submission logic here
       console.log("Form submitted:", {
         companyName: this.companyName,
         status: this.status,

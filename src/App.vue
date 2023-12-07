@@ -40,7 +40,7 @@ const isDashboard = computed(() => {
   console.log(currentPath.value);
   return (
     currentPath.value !== "/" &&
-    currentPath.value !== "/#" &&
+    currentPath.value !== "#/" &&
     currentPath.value !== "#/login" &&
     currentPath.value !== "#/sign-up"
   );
