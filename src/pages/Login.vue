@@ -1,22 +1,33 @@
 <script setup>
-
 </script>
 
 <template>
-    <div class="py-24 justify-center mx-auto items-center max-w-6xl text-center p-3">
-    
-            <h1 class="py-6 font-bold text-5xl">Media Publishing</h1>
-            <p class="max-w-lg text-center mx-auto pb-6">Ut enim ad minim veniam, quis nostrud exercitation ullamco oluptatem accusantium doloremque laudantium laboris nisi ut aliquip ex ea commodo con</p>
-            <button class="bg-media_primary hover:bg-blue-700 text-main_white font-medium py-3 items-center text-md px-6 rounded-xl">
-          Read Articles
-    </button>
-        </div>
+    <div className="p-3 max-w-lg mx-auto">
+      <h1 className="text-2xl text-center font-semibold my-7">Login</h1>
+      <form className="flex flex-col gap-4">
+        <input
+          type="email"
+          placeholder="email"
+          className="border p-3 rounded-lg"
+          id="email"
+        />
+        <input
+          type="password"
+          placeholder="password"
+          className="border p-3 rounded-lg"
+          id="password"
+        />
 
+        <button className="bg-media_primary text-main_white p-3 rounded-lg uppercase hover:opacity-95">
+          Sign in
+        </button>
+      </form>
+      <div className="flex gap-2 mt-5">
+        <p>Dont have an account?</p>
+        <a href="/sign-up">
+          <span className="text-media_primary">Sign up</span>
+        </a>
+      </div>
+    </div>
+      
 </template>
-
-<script>
-
-export default{
-
-}
-</script>
