@@ -7,6 +7,7 @@ import Home from "./pages/home/Home.vue";
 import NavbarDashboard from "./pages/dashboard/NavbarDashboard.vue";
 import HomeDashboardVue from "./pages/dashboard/HomeDashboard.vue";
 import WriterForm from "./pages/WriterForm.vue";
+import ArticlesTable from "./pages/dashboard/ArticlesTable.vue";
 
 const routes = {
   "/": Home,
@@ -14,6 +15,7 @@ const routes = {
   "/sign-up": Signup,
   "/dashboard": HomeDashboardVue,
   "/writer-form": WriterForm,
+  "/articles-table": ArticlesTable,
 };
 
 const currentPath = ref(window.location.hash);
