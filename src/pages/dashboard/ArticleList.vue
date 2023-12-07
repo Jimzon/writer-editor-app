@@ -1,5 +1,6 @@
 <script setup>
 import ForEditList from './ForEditList.vue'
+import PublishedList from './PublishedList.vue';
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import ForEditList from './ForEditList.vue'
             </button>
         </div>
         <ForEditList />
+        <PublishedList />
     </div>
 
 </template>

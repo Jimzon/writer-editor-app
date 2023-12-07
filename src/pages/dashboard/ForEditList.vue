@@ -23,7 +23,7 @@
             </div>
             <div class="block text-white">
                <div>
-                <a href="" class="px-6 py-1.5 rounded-xl bg-orange-600">
+                <a href="" class="px-8 py-1.5 rounded-lg bg-orange-500">
                     For Edit
                 </a>
                </div> 
@@ -51,7 +51,7 @@
             </div>
             <div class="block text-white">
                <div>
-                <a href="" class="px-6 py-1.5 rounded-xl bg-orange-600">
+                <a href="" class="px-8 py-1.5 rounded-lg bg-orange-500">
                     For Edit
                 </a>
                </div> 
