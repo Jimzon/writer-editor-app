@@ -7,12 +7,14 @@ import Signup from './pages/Signup.vue'
 import Home from './pages/home/Home.vue'
 import NavbarDashboard from './pages/dashboard/NavbarDashboard.vue'
 import HomeDashboardVue from './pages/dashboard/HomeDashboard.vue'
+import WriterForm from './pages/WriterForm.vue'
 
 const routes = {
   '/': Home,
   '/login': Login,
   '/sign-up': Signup,
   '/dashboard': HomeDashboardVue,
+  '/writer-form': WriterForm,
 }
 
 const currentPath = ref(window.location.hash)
