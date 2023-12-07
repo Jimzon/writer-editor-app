@@ -6,7 +6,7 @@ import Signup from "./pages/Signup.vue";
 import Home from "./pages/home/Home.vue";
 import NavbarDashboard from "./pages/dashboard/NavbarDashboard.vue";
 import HomeDashboardVue from "./pages/dashboard/HomeDashboard.vue";
-import WriterForm from "./pages/WriterForm.vue";
+import WriterForm from "./pages/dashboard/WriterForm.vue";
 import UsersList from "./pages/dashboard/UsersList.vue";
 import ArticlesTable from "./pages/dashboard/ArticlesTable.vue";
 
