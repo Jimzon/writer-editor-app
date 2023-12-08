@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { globalState } from "@/store.js";
 
 const apiUrl = "http://localhost:8000";
 const username = ref("");
@@ -32,11 +33,12 @@ const login = async () => {
     }
 
     const data = await response.json();
+    globalState.user = data;
+    localStorage.setItem("userData", JSON.stringify(data));
     console.log(data);
 
-    token.value = responseData.token;
-    router.push("/company");
-
+    token.value = data.token;
+    window.location.hash = "/dashboard";
     return data;
   } catch (error) {
     console.log(error.response);

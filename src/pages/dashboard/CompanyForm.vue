@@ -1,40 +1,11 @@
-<!-- <script setup>
-import { ref } from "vue";
-
-const apiUrl = "http://localhost:8000";
-
-const name = ref("");
-const status = ref("");
-
-const saveCompany = async () => {
-  const userData = {
-    name: name.value,
-    statuts: status.value,
-  };
-  try {
-    const response = await fetch(`${apiUrl}/api/companies/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    console.error("Error signing up:", error);
-    throw error;
-  }
-};
-</script> -->
 <script setup>
 import { ref } from "vue";
+
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goToRoute = () => {};
 
 const apiUrl = "http://localhost:8000";
 const name = ref("");
@@ -64,7 +35,7 @@ const saveCompany = async () => {
     }
 
     const data = await response.json();
-
+    window.location.hash = "/company-list";
     return data;
   } catch (error) {
     console.error("Error signing up:", error);

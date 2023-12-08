@@ -1,10 +1,23 @@
 <script setup>
 import { ref } from "vue";
+import { globalState } from "@/store";
 
 const isMobileMenuOpen = ref(false);
+const dropdownVisible = ref(false);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+const toggleDropdown = () => {
+  dropdownVisible.value = !dropdownVisible.value;
+};
+
+const logout = () => {
+  // Add your logout logic here
+  console.log("Logout clicked");
+  // You can redirect to a login page or perform other logout actions here
+  // Example: window.location.href = '/login';
 };
 </script>
 
@@ -12,6 +25,8 @@ const toggleMobileMenu = () => {
   <header class="py-4 drop-shadow-lg box-shadow-lg shadow-lg">
     <div class="flex gap-4 justify-between items-center max-w-6xl mx-auto p-3">
       <!-- Mobile Menu Button -->
+      {{ globalState.user }}
+
       <button
         @click="toggleMobileMenu"
         class="lg:hidden text-gray-800 focus:outline-none"
@@ -100,13 +115,28 @@ const toggleMobileMenu = () => {
           <h3 class="text-slate-700 font-semibold">Leonora Hale</h3>
           <h4>Editor</h4>
         </div>
-        <a href="#/login" class="rounded-full h-12 w-12">
-          <img
-            class="w-12 h-12 rounded-full mx-auto object-cover"
-            src="/src/assets/sample-img.jpg"
-            alt="profile-image"
-          />
-        </a>
+        <div @click="toggleDropdown" class="relative">
+          <div class="rounded-full h-12 w-12">
+            <img
+              class="w-12 h-12 rounded-full mx-auto object-cover"
+              src="/src/assets/sample-img.jpg"
+              alt="profile-image"
+            />
+          </div>
+          <!-- Logout Dropdown -->
+          <div
+            v-show="dropdownVisible"
+            @click="logout"
+            class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden"
+            style="display: none"
+          >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
+              >Logout</a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </header>
