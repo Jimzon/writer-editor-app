@@ -1,12 +1,18 @@
 <script setup>
 import { ref } from "vue";
 
+import { globalState } from "@/store.js";
+
 const apiUrl = "http://localhost:8000";
 const username = ref("");
 const email = ref("");
 const name = ref("");
 const password = ref("");
 const errors = ref();
+
+if (globalState.user) {
+  window.location.hash = "/login";
+}
 
 const signup = async () => {
   errors.value = null;
@@ -31,7 +37,7 @@ const signup = async () => {
     }
 
     const data = await response.json();
-
+    window.location.hash = "/login";
     return data;
   } catch (error) {
     console.error("Error signing up:", error);
