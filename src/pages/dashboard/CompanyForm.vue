@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ref } from "vue";
 
 const apiUrl = "http://localhost:8000";
@@ -21,6 +21,45 @@ const saveCompany = async () => {
     });
 
     if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error signing up:", error);
+    throw error;
+  }
+};
+</script> -->
+<script setup>
+import { ref } from "vue";
+
+const apiUrl = "http://localhost:8000";
+const name = ref("");
+const status = ref("");
+const errors = ref();
+const token = "e9a8b0c44190b041ce4925012c038cd51c899405";
+
+const saveCompany = async () => {
+  errors.value = null;
+  const userData = {
+    name: name.value,
+    status: status.value,
+  };
+  try {
+    const response = await fetch(`${apiUrl}/api/companies/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      errors.value = await response.json();
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 

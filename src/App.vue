@@ -6,19 +6,19 @@ import Signup from "./pages/home/Signup.vue";
 import Home from "./pages/home/Home.vue";
 import NavbarDashboard from "./pages/dashboard/NavbarDashboard.vue";
 import HomeDashboardVue from "./pages/dashboard/HomeDashboard.vue";
-import WriterForm from "./pages/dashboard/WriterForm.vue";
 import UsersList from "./pages/dashboard/UsersList.vue";
 import ArticlesTable from "./pages/dashboard/ArticlesTable.vue";
 import UserForm from "./pages/dashboard/UserForm.vue";
 import CompanyList from "./pages/dashboard/CompanyList.vue";
 import CompanyForm from "./pages/dashboard/CompanyForm.vue";
+import ArticleForm from "./pages/dashboard/ArticleForm.vue";
 
 const routes = {
   "/": Home,
   "/login": Login,
   "/sign-up": Signup,
   "/dashboard": HomeDashboardVue,
-  "/writer-form": WriterForm,
+  "/article-form": ArticleForm,
   "/articles-table": ArticlesTable,
   "/users-list": UsersList,
   "/user-form": UserForm,

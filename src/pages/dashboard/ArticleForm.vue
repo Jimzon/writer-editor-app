@@ -1,4 +1,41 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from "vue";
+
+const selectedCompanyId = ref(null);
+const companies = ref([]);
+const token = "e9a8b0c44190b041ce4925012c038cd51c899405";
+
+const fetchData = async () => {
+  const apiUrl = "http://localhost:8000"; // Add this line if apiUrl is not defined globally
+  try {
+    const response = await fetch(`${apiUrl}/api/companies`, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    companies.value = data;
+
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
+const getSelectedCompanyName = (companyId) => {
+  const selectedCompany = companies.value.find(
+    (company) => company.id === companyId
+  );
+  return selectedCompany ? selectedCompany.name : "";
+};
+
+onMounted(() => {
+  fetchData();
+});
+</script>
 
 <template>
   <div class="py-8 md:py-24 justify-center mx-auto items-center max-w-4xl p-3">
@@ -22,14 +59,19 @@
           <label for="company" class="block text-sm font-medium text-gray-600"
             >Related Company</label
           >
+
           <select
             id="company"
             name="company"
             class="mt-1 p-2 border border-gray-300 rounded-md w-full"
           >
-            <option value="company1">Company 1</option>
-            <option value="company2">Company 2</option>
-            <option value="company3">Company 3</option>
+            <option
+              v-for="company in companies"
+              :key="company.id"
+              :value="company.id"
+            >
+              {{ company.name }}
+            </option>
           </select>
         </div>
       </div>

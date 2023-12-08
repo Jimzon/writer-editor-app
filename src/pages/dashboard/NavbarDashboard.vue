@@ -98,7 +98,7 @@ const toggleMobileMenu = () => {
       <div class="flex gap-6 items-center cursor-pointer lg:flex">
         <div class="hidden sm:block">
           <h3 class="text-slate-700 font-semibold">Leonora Hale</h3>
-          <h4>Writer</h4>
+          <h4>Editor</h4>
         </div>
         <a href="#/login" class="rounded-full h-12 w-12">
           <img

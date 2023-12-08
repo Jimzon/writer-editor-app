@@ -8,7 +8,7 @@ import PublishedList from "./PublishedList.vue";
     <div class="flex justify-between items-center">
       <h2 class="font-semibold text-xl">Articles List</h2>
       <a
-        href="#/writer-form"
+        href="#/article-form"
         class="bg-sky-800 flex text-white font-normal py-1.5 px-3.5 items-center text-md rounded-full"
       >
         <span class="text-md pr-2">+</span>Create Article
