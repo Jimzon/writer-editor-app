@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { globalState } from "@/store";
 
 const isMobileMenuOpen = ref(false);
@@ -19,6 +19,22 @@ const logout = () => {
   window.location.hash = "/login";
   console.log("Logout clicked");
 };
+
+// const fetchAndUpdateProfile = async () => {
+//   try {
+//     const response = await axios.get("/api/users");
+
+//     const newName = response.data.name;
+
+//     globalState.user.name = newName;
+//     console.log("Profile name updated successfully");
+//   } catch (error) {
+//     console.error("Error fetching or updating profile:", error);
+//   }
+// };
+// onMounted(() => {
+//   fetchAndUpdateProfile();
+// });
 </script>
 
 <template>
@@ -111,7 +127,12 @@ const logout = () => {
       <!-- User Profile -->
       <div class="flex gap-6 items-center cursor-pointer lg:flex">
         <div class="hidden sm:block">
-          <h3 class="text-slate-700 font-semibold">Leonora Hale</h3>
+          <h3
+            v-if="globalState.user"
+            class="text-slate-700 capitalize font-semibold"
+          >
+            {{ globalState.user.name }}
+          </h3>
           <h4>Editor</h4>
         </div>
         <div @click="toggleDropdown" class="relative">
