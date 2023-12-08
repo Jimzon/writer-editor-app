@@ -1,4 +1,38 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const apiUrl = "http://localhost:8000";
+
+const name = ref("");
+const status = ref("");
+
+const saveCompany = async () => {
+  const userData = {
+    name: name.value,
+    statuts: status.value,
+  };
+  try {
+    const response = await fetch(`${apiUrl}/api/companies/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error signing up:", error);
+    throw error;
+  }
+};
+</script>
 
 <template>
   <div class="py-24 justify-center mx-auto items-center max-w-4xl p-3">
@@ -11,7 +45,7 @@
             >Company Name</label
           >
           <input
-            v-model="companyName"
+            v-model="name"
             type="text"
             id="companyName"
             name="companyName"
@@ -66,6 +100,7 @@
 
       <div class="col-span-2 flex justify-end">
         <button
+          @click="saveCompany"
           type="submit"
           class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
         >

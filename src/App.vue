@@ -39,6 +39,7 @@ const currentView = computed(() => {
 const isDashboard = computed(() => {
   console.log(currentPath.value);
   return (
+    currentPath.value !== "" &&
     currentPath.value !== "/" &&
     currentPath.value !== "#/" &&
     currentPath.value !== "#/login" &&
