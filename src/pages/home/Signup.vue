@@ -1,15 +1,15 @@
 <script setup>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 
 const apiUrl = "http://localhost:8000";
 const username = ref("");
 const email = ref("");
 const name = ref("");
 const password = ref("");
-const router = useRouter();
+const errors = ref();
 
 const signup = async () => {
+  errors.value = null;
   const userData = {
     username: username.value,
     email: email.value,
@@ -26,11 +26,11 @@ const signup = async () => {
     });
 
     if (!response.ok) {
+      errors.value = await response.json();
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
     const data = await response.json();
-    router.push("/login");
 
     return data;
   } catch (error) {
@@ -72,7 +72,7 @@ const signup = async () => {
         class="border p-3 rounded-lg"
         id="password"
       />
-
+      <p v-if="errors" class="text-red-400">{{ errors.non_field_errors[0] }}</p>
       <!-- <select
         id="company"
         name="company"

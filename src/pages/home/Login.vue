@@ -1,12 +1,16 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const apiUrl = "http://localhost:8000";
 const username = ref("");
 const password = ref("");
 
 const data = ref({});
+const token = ref("");
 const errors = ref();
+const router = useRouter();
+
 const login = async () => {
   errors.value = null;
   const userData = {
@@ -29,6 +33,9 @@ const login = async () => {
 
     const data = await response.json();
     console.log(data);
+
+    token.value = responseData.token;
+    router.push("/company");
 
     return data;
   } catch (error) {
