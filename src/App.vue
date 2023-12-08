@@ -12,6 +12,19 @@ import UserForm from "./pages/dashboard/UserForm.vue";
 import CompanyList from "./pages/dashboard/CompanyList.vue";
 import CompanyForm from "./pages/dashboard/CompanyForm.vue";
 import ArticleForm from "./pages/dashboard/ArticleForm.vue";
+import { onMounted } from "vue";
+import { globalState } from "./store";
+
+onMounted(() => {
+  try {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData) {
+      globalState.user = userData;
+    }
+  } catch (e) {
+    console.error("Error parsing JSON from localStorage", e);
+  }
+});
 
 const routes = {
   "/": Home,

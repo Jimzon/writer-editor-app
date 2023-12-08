@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-
+import { globalState } from "@/store";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -11,7 +11,7 @@ const apiUrl = "http://localhost:8000";
 const name = ref("");
 const status = ref("");
 const errors = ref();
-const token = "e9a8b0c44190b041ce4925012c038cd51c899405";
+const token = globalState.user.token;
 
 const saveCompany = async () => {
   errors.value = null;

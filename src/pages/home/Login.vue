@@ -12,6 +12,10 @@ const token = ref("");
 const errors = ref();
 const router = useRouter();
 
+if (globalState.user) {
+  window.location.hash = "/dashboard";
+}
+
 const login = async () => {
   errors.value = null;
   const userData = {
@@ -31,7 +35,6 @@ const login = async () => {
       errors.value = await response.json();
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
     const data = await response.json();
     globalState.user = data;
     localStorage.setItem("userData", JSON.stringify(data));

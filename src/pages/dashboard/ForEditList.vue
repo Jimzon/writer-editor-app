@@ -1,7 +1,46 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { globalState } from "@/store";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const articles = ref([]);
+
+const goToRoute = () => {};
+
+const apiUrl = "http://localhost:8000";
+const name = ref("");
+const status = ref("");
+const errors = ref();
+const token = globalState.user.token;
+
+const getArticles = async () => {
+  errors.value = null;
+  try {
+    const response = await fetch(`${apiUrl}/api/articles/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      errors.value = await response.json();
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    articles = await response.json();
+  } catch (error) {
+    console.error("Error signing up:", error);
+    throw error;
+  }
+};
+</script>
 
 <template>
   <div class="items-center max-w-4xl py-3">
+    {{ articles }}
     <h2 class="font-medium py-2">For Edit</h2>
 
     <div

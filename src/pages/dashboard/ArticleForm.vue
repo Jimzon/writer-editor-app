@@ -1,12 +1,14 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
+import { globalState } from "@/store";
 
+const errors = ref(null);
 const selectedCompanyId = ref(null);
 const companies = ref([]);
-const token = "e9a8b0c44190b041ce4925012c038cd51c899405";
+const token = globalState.user.token;
+const apiUrl = "http://localhost:8000";
 
 const fetchData = async () => {
-  const apiUrl = "http://localhost:8000"; // Add this line if apiUrl is not defined globally
   try {
     const response = await fetch(`${apiUrl}/api/companies`, {
       headers: {
@@ -35,6 +37,37 @@ const getSelectedCompanyName = (companyId) => {
 onMounted(() => {
   fetchData();
 });
+const articleData = reactive({
+  title: "",
+  body: "",
+  company: "",
+});
+const storeArticle = async () => {
+  errors.value = null;
+
+  try {
+    const response = await fetch(`${apiUrl}/api/articles/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
+      body: JSON.stringify(articleData),
+    });
+
+    if (!response.ok) {
+      errors.value = await response.json();
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error signing up:", error);
+    throw error;
+  }
+};
 </script>
 
 <template>
@@ -46,6 +79,7 @@ onMounted(() => {
             >Title</label
           >
           <input
+            v-model="articleData.title"
             type="text"
             id="title"
             name="title"
@@ -61,6 +95,7 @@ onMounted(() => {
           >
 
           <select
+            v-model="articleData.company"
             id="company"
             name="company"
             class="mt-1 p-2 border border-gray-300 rounded-md w-full"
@@ -82,6 +117,7 @@ onMounted(() => {
         >Content</label
       >
       <textarea
+        v-model="articleData.body"
         id="content"
         name="content"
         rows="4"
@@ -104,6 +140,7 @@ onMounted(() => {
     <!-- Action Buttons -->
     <div class="flex justify-end gap-2 mt-4">
       <button
+        @click="storeArticle"
         type="button"
         class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
       >

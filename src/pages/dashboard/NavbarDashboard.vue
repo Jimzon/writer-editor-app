@@ -14,10 +14,10 @@ const toggleDropdown = () => {
 };
 
 const logout = () => {
-  // Add your logout logic here
+  localStorage.clear();
+  globalState.user = null;
+  window.location.hash = "/login";
   console.log("Logout clicked");
-  // You can redirect to a login page or perform other logout actions here
-  // Example: window.location.href = '/login';
 };
 </script>
 
@@ -25,7 +25,6 @@ const logout = () => {
   <header class="py-4 drop-shadow-lg box-shadow-lg shadow-lg">
     <div class="flex gap-4 justify-between items-center max-w-6xl mx-auto p-3">
       <!-- Mobile Menu Button -->
-      {{ globalState.user }}
 
       <button
         @click="toggleMobileMenu"
@@ -126,12 +125,11 @@ const logout = () => {
           <!-- Logout Dropdown -->
           <div
             v-show="dropdownVisible"
-            @click="logout"
             class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-md overflow-hidden"
             style="display: none"
           >
             <a
-              href="#"
+              @click="logout"
               class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
               >Logout</a
             >
